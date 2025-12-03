@@ -2,13 +2,14 @@ const express = require("express");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const dotenv = require("dotenv");
-const path = require("path");
 
-const { notFound, errorHandler } = require("./middleware/errorHandler");
+const { notFound, errorHandler } = require("./middlewares/errorHandler");
 
 dotenv.config();
 
 const authRoutes = require("./routes/authRoutes");
+const portfolioRoutes = require("./routes/portfolioRoutes");
+const templateRoutes = require("./routes/templateRoutes");
 
 
 const app = express();
@@ -26,6 +27,8 @@ app.use(cookieParser());
 
 // API routes
 app.use("/api/auth", authRoutes);
+app.use("/api/portfolio", portfolioRoutes);
+app.use("/api/templates", templateRoutes);
 
 
 
