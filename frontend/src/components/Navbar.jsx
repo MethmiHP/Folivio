@@ -10,9 +10,7 @@ const Navbar = () => {
   const location = useLocation();
   const { username } = useParams();
 
-  // Public portfolio route like /:username (single segment, not /dashboard etc)
-  const isPublicPortfolio =
-    /^\/[^/]+$/.test(location.pathname) && location.pathname.slice(1) === username;
+  const isPublicPortfolio = location.pathname.startsWith("/portfolio/");
 
   const handleLogout = async () => {
     try {

@@ -10,6 +10,8 @@ dotenv.config();
 const authRoutes = require("./routes/authRoutes");
 const portfolioRoutes = require("./routes/portfolioRoutes");
 const templateRoutes = require("./routes/templateRoutes");
+const aiRoutes = require("./routes/aiRoutes");
+const pdfRoutes = require("./routes/pdfRoutes");
 
 
 const app = express();
@@ -29,6 +31,8 @@ app.use(cookieParser());
 app.use("/api/auth", authRoutes);
 app.use("/api/portfolio", portfolioRoutes);
 app.use("/api/templates", templateRoutes);
+app.use("/api/ai", aiRoutes);
+app.use("/api/pdf", pdfRoutes);
 
 
 

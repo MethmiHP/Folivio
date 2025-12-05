@@ -20,6 +20,17 @@ const projectSchema = new mongoose.Schema(
   { _id: false }
 );
 
+const referenceSchema = new mongoose.Schema(
+  {
+    name: String,
+    company: String,
+    position: String,
+    contactNo: String,
+    email: String,
+  },
+  { _id: false }
+);
+
 const portfolioSchema = new mongoose.Schema(
   {
     user: {
@@ -37,6 +48,7 @@ const portfolioSchema = new mongoose.Schema(
     skills: [String],
     experience: [experienceSchema],
     projects: [projectSchema],
+    references: [referenceSchema],
     social: {
       email: String,
       github: String,
