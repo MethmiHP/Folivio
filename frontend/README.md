@@ -1,16 +1,38 @@
-# React + Vite
+# Folivio Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Environment Variables
 
-Currently, two official plugins are available:
+Create a `.env` file in the `frontend` directory with the following variables:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```env
+# Backend API base URL (without /api suffix)
+VITE_API_BASE_URL=http://localhost:5000
 
-## React Compiler
+# Public Frontend URL (REQUIRED for portfolio links to work on other devices)
+# For local network access: Use your machine's IP address
+#   Example: http://192.168.1.100:5173
+# For production: Use your domain
+#   Example: https://yourdomain.com
+# If not set, will use localhost (won't work on other devices)
+VITE_PUBLIC_URL=
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Setting up Public URL for Network Access
 
-## Expanding the ESLint configuration
+To make portfolio links work on other computers/devices on your network:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. **Find your machine's IP address:**
+   - Windows: Run `ipconfig` in Command Prompt, look for "IPv4 Address"
+   - Mac/Linux: Run `ifconfig` or `ip addr`, look for your network interface IP
+
+2. **Set VITE_PUBLIC_URL in `.env`:**
+   ```env
+   VITE_PUBLIC_URL=http://YOUR_IP:5173
+   ```
+   Example: `VITE_PUBLIC_URL=http://192.168.1.100:5173`
+
+3. **Restart the dev server** after changing `.env` file
+
+4. **Make sure your firewall allows connections** on port 5173 (or your Vite port)
+
+Now portfolio links will work on other devices on your network!

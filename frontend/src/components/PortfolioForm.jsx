@@ -45,9 +45,13 @@ const PortfolioForm = ({ portfolio, onChange }) => {
   const projects = portfolio.projects || [];
   const references = portfolio.references || [];
 
+  // Common input styles
+  const inputClass = "w-full bg-slate-950/50 border border-slate-700/50 rounded-lg px-3 py-2 text-sm text-slate-100 outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all";
+  const textareaClass = "w-full bg-slate-950/50 border border-slate-700/50 rounded-lg px-3 py-2 text-sm text-slate-100 outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all resize-none";
+
   return (
     <div className="bg-slate-900/70 border border-slate-800 rounded-2xl p-4 space-y-4">
-      <h2 className="text-sm font-semibold mb-1">Content</h2>
+      <h2 className="text-sm font-semibold mb-1 text-white">Content</h2>
 
       {/* About */}
       <section className="space-y-2">
@@ -58,6 +62,7 @@ const PortfolioForm = ({ portfolio, onChange }) => {
           <div>
             <label className="text-[11px] text-slate-400">Name</label>
             <input
+              className={inputClass}
               value={about.name || ""}
               onChange={(e) => handleField("about", "name", e.target.value)}
             />
@@ -65,6 +70,7 @@ const PortfolioForm = ({ portfolio, onChange }) => {
           <div>
             <label className="text-[11px] text-slate-400">Role / Title</label>
             <input
+              className={inputClass}
               value={about.role || ""}
               onChange={(e) => handleField("about", "role", e.target.value)}
             />
@@ -74,6 +80,7 @@ const PortfolioForm = ({ portfolio, onChange }) => {
               Short description
             </label>
             <textarea
+              className={textareaClass}
               rows={3}
               value={about.description || ""}
               onChange={(e) =>
@@ -91,7 +98,11 @@ const PortfolioForm = ({ portfolio, onChange }) => {
           <label className="text-[11px] text-slate-400">
             Skills (comma separated)
           </label>
-          <input value={skillsStr} onChange={(e) => handleSkillsChange(e.target.value)} />
+          <input 
+            className={inputClass}
+            value={skillsStr} 
+            onChange={(e) => handleSkillsChange(e.target.value)} 
+          />
         </div>
       </section>
 
@@ -102,7 +113,7 @@ const PortfolioForm = ({ portfolio, onChange }) => {
           <button
             type="button"
             onClick={() => addListItem("experience", emptyExperience)}
-            className="text-[11px] px-2 py-1 rounded-md border border-slate-700 hover:border-indigo-500"
+            className="text-[11px] px-2 py-1 rounded-md border border-slate-700 hover:border-indigo-500 text-slate-300 transition-colors"
           >
             + Add
           </button>
@@ -116,7 +127,7 @@ const PortfolioForm = ({ portfolio, onChange }) => {
           {experience.map((exp, idx) => (
             <div
               key={idx}
-              className="border border-slate-800 rounded-xl p-3 space-y-2"
+              className="border border-slate-800 rounded-xl p-3 space-y-2 bg-slate-950/30"
             >
               <div className="flex justify-between items-center">
                 <span className="text-[11px] text-slate-400">Position #{idx + 1}</span>
@@ -132,6 +143,7 @@ const PortfolioForm = ({ portfolio, onChange }) => {
                 <div>
                   <label className="text-[11px] text-slate-400">Company</label>
                   <input
+                    className={inputClass}
                     value={exp.company || ""}
                     onChange={(e) =>
                       handleListChange("experience", idx, "company", e.target.value)
@@ -141,6 +153,7 @@ const PortfolioForm = ({ portfolio, onChange }) => {
                 <div>
                   <label className="text-[11px] text-slate-400">Role</label>
                   <input
+                    className={inputClass}
                     value={exp.role || ""}
                     onChange={(e) =>
                       handleListChange("experience", idx, "role", e.target.value)
@@ -150,6 +163,7 @@ const PortfolioForm = ({ portfolio, onChange }) => {
                 <div>
                   <label className="text-[11px] text-slate-400">Year</label>
                   <input
+                    className={inputClass}
                     value={exp.year || ""}
                     onChange={(e) =>
                       handleListChange("experience", idx, "year", e.target.value)
@@ -160,6 +174,7 @@ const PortfolioForm = ({ portfolio, onChange }) => {
               <div>
                 <label className="text-[11px] text-slate-400">Description</label>
                 <textarea
+                  className={textareaClass}
                   rows={2}
                   value={exp.description || ""}
                   onChange={(e) =>
@@ -184,7 +199,7 @@ const PortfolioForm = ({ portfolio, onChange }) => {
           <button
             type="button"
             onClick={() => addListItem("projects", emptyProject)}
-            className="text-[11px] px-2 py-1 rounded-md border border-slate-700 hover:border-indigo-500"
+            className="text-[11px] px-2 py-1 rounded-md border border-slate-700 hover:border-indigo-500 text-slate-300 transition-colors"
           >
             + Add
           </button>
@@ -198,7 +213,7 @@ const PortfolioForm = ({ portfolio, onChange }) => {
           {projects.map((proj, idx) => (
             <div
               key={idx}
-              className="border border-slate-800 rounded-xl p-3 space-y-2"
+              className="border border-slate-800 rounded-xl p-3 space-y-2 bg-slate-950/30"
             >
               <div className="flex justify-between items-center">
                 <span className="text-[11px] text-slate-400">Project #{idx + 1}</span>
@@ -214,6 +229,7 @@ const PortfolioForm = ({ portfolio, onChange }) => {
                 <div>
                   <label className="text-[11px] text-slate-400">Title</label>
                   <input
+                    className={inputClass}
                     value={proj.title || ""}
                     onChange={(e) =>
                       handleListChange("projects", idx, "title", e.target.value)
@@ -225,6 +241,7 @@ const PortfolioForm = ({ portfolio, onChange }) => {
                     Link (GitHub / live)
                   </label>
                   <input
+                    className={inputClass}
                     value={proj.link || ""}
                     onChange={(e) =>
                       handleListChange("projects", idx, "link", e.target.value)
@@ -235,6 +252,7 @@ const PortfolioForm = ({ portfolio, onChange }) => {
               <div>
                 <label className="text-[11px] text-slate-400">Description</label>
                 <textarea
+                  className={textareaClass}
                   rows={2}
                   value={proj.description || ""}
                   onChange={(e) =>
@@ -261,6 +279,7 @@ const PortfolioForm = ({ portfolio, onChange }) => {
           <div>
             <label className="text-[11px] text-slate-400">Email</label>
             <input
+              className={inputClass}
               value={social.email || ""}
               onChange={(e) => handleField("social", "email", e.target.value)}
             />
@@ -268,6 +287,7 @@ const PortfolioForm = ({ portfolio, onChange }) => {
           <div>
             <label className="text-[11px] text-slate-400">GitHub</label>
             <input
+              className={inputClass}
               value={social.github || ""}
               onChange={(e) => handleField("social", "github", e.target.value)}
             />
@@ -275,6 +295,7 @@ const PortfolioForm = ({ portfolio, onChange }) => {
           <div>
             <label className="text-[11px] text-slate-400">LinkedIn</label>
             <input
+              className={inputClass}
               value={social.linkedin || ""}
               onChange={(e) => handleField("social", "linkedin", e.target.value)}
             />
@@ -284,6 +305,7 @@ const PortfolioForm = ({ portfolio, onChange }) => {
               Personal website
             </label>
             <input
+              className={inputClass}
               value={social.website || ""}
               onChange={(e) => handleField("social", "website", e.target.value)}
             />
@@ -298,7 +320,7 @@ const PortfolioForm = ({ portfolio, onChange }) => {
           <button
             type="button"
             onClick={() => addListItem("references", emptyReference)}
-            className="text-[11px] px-2 py-1 rounded-md border border-slate-700 hover:border-indigo-500"
+            className="text-[11px] px-2 py-1 rounded-md border border-slate-700 hover:border-indigo-500 text-slate-300 transition-colors"
           >
             + Add
           </button>
@@ -312,7 +334,7 @@ const PortfolioForm = ({ portfolio, onChange }) => {
           {references.map((ref, idx) => (
             <div
               key={idx}
-              className="border border-slate-800 rounded-xl p-3 space-y-2"
+              className="border border-slate-800 rounded-xl p-3 space-y-2 bg-slate-950/30"
             >
               <div className="flex justify-between items-center">
                 <span className="text-[11px] text-slate-400">
@@ -330,6 +352,7 @@ const PortfolioForm = ({ portfolio, onChange }) => {
                 <div>
                   <label className="text-[11px] text-slate-400">Name</label>
                   <input
+                    className={inputClass}
                     value={ref.name || ""}
                     onChange={(e) =>
                       handleListChange("references", idx, "name", e.target.value)
@@ -339,6 +362,7 @@ const PortfolioForm = ({ portfolio, onChange }) => {
                 <div>
                   <label className="text-[11px] text-slate-400">Company</label>
                   <input
+                    className={inputClass}
                     value={ref.company || ""}
                     onChange={(e) =>
                       handleListChange(
@@ -353,6 +377,7 @@ const PortfolioForm = ({ portfolio, onChange }) => {
                 <div>
                   <label className="text-[11px] text-slate-400">Position</label>
                   <input
+                    className={inputClass}
                     value={ref.position || ""}
                     onChange={(e) =>
                       handleListChange(
@@ -369,6 +394,7 @@ const PortfolioForm = ({ portfolio, onChange }) => {
                     Contact No
                   </label>
                   <input
+                    className={inputClass}
                     value={ref.contact_no || ref.contactNo || ""}
                     onChange={(e) =>
                       handleListChange(
@@ -384,6 +410,7 @@ const PortfolioForm = ({ portfolio, onChange }) => {
               <div>
                 <label className="text-[11px] text-slate-400">Email</label>
                 <input
+                  className={inputClass}
                   value={ref.Email || ref.email || ""}
                   onChange={(e) =>
                     handleListChange(

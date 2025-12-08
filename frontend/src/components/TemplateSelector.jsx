@@ -22,6 +22,11 @@ const TemplateSelector = ({ templates, selected, onSelect }) => {
         accent: "border-pink-500",
         name: "Creative",
       },
+      template5: {
+        bg: "bg-gradient-to-br from-green-900 to-teal-900",
+        accent: "border-green-500",
+        name: "Greenary",
+      }
     };
     return previews[identifier] || previews.template1;
   };
@@ -32,6 +37,7 @@ const TemplateSelector = ({ templates, selected, onSelect }) => {
     { _id: "t2", name: "Modern", identifier: "template2", isPremium: false },
     { _id: "t3", name: "Minimal", identifier: "template3", isPremium: false },
     { _id: "t4", name: "Creative", identifier: "template4", isPremium: false },
+    { _id: "t5", name: "Greenary", identifier: "template5", isPremium: false },
   ];
 
   const displayTemplates = templates.length > 0 ? templates : defaultTemplates;

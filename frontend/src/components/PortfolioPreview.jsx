@@ -1,12 +1,13 @@
-import Template1 from "./templates/Template1";
-import Template2 from "./templates/Template2";
-import Template3 from "./templates/Template3";
-import Template4 from "./templates/Template4";
+import Template1 from "../components/templates/Template1";
+import Template2 from "../components/templates/Template2";
+import Template3 from "../components/templates/Template3";
+import Template4 from "../components/templates/Template4";
+import Template5 from "../components/templates/Template5";
+import { getPublicUrl, isLocalhost } from "../utils/getPublicUrl";
 
 const PortfolioPreview = ({ portfolio, username }) => {
   const theme = portfolio?.theme || "template1";
-  // Always build the public URL from the current origin so it works in dev and prod
-  const publicUrl = `${window.location.origin}/portfolio/${username}`;
+  const publicUrl = getPublicUrl(`/portfolio/${username}`);
 
   // Template mapping
   const templateComponents = {
@@ -14,6 +15,7 @@ const PortfolioPreview = ({ portfolio, username }) => {
     template2: Template2,
     template3: Template3,
     template4: Template4,
+    template5: Template5,
   };
 
   const SelectedTemplate = templateComponents[theme] || Template1;
@@ -32,6 +34,11 @@ const PortfolioPreview = ({ portfolio, username }) => {
           >
             {publicUrl}
           </a>
+          {isLocalhost() && !import.meta.env.VITE_PUBLIC_URL && (
+            <span className="text-[10px] text-amber-400 mt-1 max-w-[200px] text-right">
+              ⚠️ Set VITE_PUBLIC_URL in .env for network access
+            </span>
+          )}
         </div>
       </div>
 

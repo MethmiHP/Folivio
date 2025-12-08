@@ -13,6 +13,7 @@ const Dashboard = () => {
   const [aiOpen, setAiOpen] = useState(false);
   const [aiText, setAiText] = useState("");
   const [aiLoading, setAiLoading] = useState(false);
+  const [showAllTemplates, setShowAllTemplates] = useState(false);
 
   // Load existing portfolio + templates
   useEffect(() => {
@@ -129,6 +130,10 @@ const Dashboard = () => {
     }
   };
 
+  // Get templates to display (4 by default, all if expanded)
+  const displayedTemplates = showAllTemplates ? templates : templates.slice(0, 4);
+  const hasMoreTemplates = templates.length > 4;
+
   if (!user) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-indigo-950 via-slate-900 to-purple-950 flex items-center justify-center">
@@ -147,10 +152,10 @@ const Dashboard = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-950 via-slate-900 to-purple-950">
-      <div className="w-full px-6 py-6">
+      <div className="w-full">
         <div className="space-y-6">
           {/* Top bar */}
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 px-6 pt-6">
             <div>
               <h1 className="text-2xl font-semibold mb-1 text-white">Portfolio Builder</h1>
               <p className="text-sm text-slate-300">
@@ -183,7 +188,7 @@ const Dashboard = () => {
 
           {/* AI panel */}
           {aiOpen && (
-            <div className="bg-slate-900/60 backdrop-blur-md border border-slate-700/50 rounded-2xl p-4 space-y-3 shadow-xl">
+            <div className="bg-slate-900/60 backdrop-blur-md border border-slate-700/50 rounded-2xl p-4 space-y-3 shadow-xl mx-6">
               <div className="flex items-start justify-between gap-3">
                 <div>
                   <h2 className="text-sm font-semibold text-white">AI Portfolio Generator</h2>
@@ -222,14 +227,26 @@ const Dashboard = () => {
           )}
 
           {/* Template chooser */}
-          <TemplateSelector
-            templates={templates}
-            selected={portfolio.theme}
-            onSelect={handleTemplateChange}
-          />
+          <div className="px-6">
+            <TemplateSelector
+              templates={displayedTemplates}
+              selected={portfolio.theme}
+              onSelect={handleTemplateChange}
+            />
+            {hasMoreTemplates && (
+              <div className="flex justify-center mt-4">
+                <button
+                  onClick={() => setShowAllTemplates(!showAllTemplates)}
+                  className="px-6 py-2 rounded-lg border border-slate-600/50 bg-slate-800/30 backdrop-blur-sm text-sm text-slate-200 hover:border-purple-500 hover:bg-slate-800/50 hover:text-white transition-all"
+                >
+                  {showAllTemplates ? "Show Less" : `See More Templates (${templates.length - 4} more)`}
+                </button>
+              </div>
+            )}
+          </div>
 
           {/* Main editor grid */}
-          <div className="grid lg:grid-cols-2 gap-6 items-start">
+          <div className="grid lg:grid-cols-2 gap-6 items-start px-6 pb-6">
             <PortfolioForm portfolio={portfolio} onChange={handleChange} />
             <PortfolioPreview portfolio={portfolio} username={user.username} />
           </div>

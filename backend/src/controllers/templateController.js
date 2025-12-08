@@ -41,6 +41,14 @@ const getTemplates = asyncHandler(async (req, res) => {
         isPremium: false,
         category: "creative",
       },
+      {
+        _id: "t5",
+        name: "Greenary",
+        identifier: "template5",
+        description: "Sleek design for professionals",
+        isPremium: true,
+        category: "creative",
+      },
     ];
   }
 
