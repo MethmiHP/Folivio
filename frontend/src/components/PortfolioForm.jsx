@@ -1,6 +1,6 @@
 const emptyExperience = { company: "", role: "", year: "", description: "" };
 const emptyProject = { title: "", description: "", link: "", image: "" };
-const emptyReference = { name: "", company: "", position: "", contact_no: "", Email: "" };
+const emptyReference = { name: "", company: "", position: "", contactNo: "", email: "" };
 
 const PortfolioForm = ({ portfolio, onChange }) => {
   const handleField = (section, field, value) => {
@@ -46,8 +46,8 @@ const PortfolioForm = ({ portfolio, onChange }) => {
   const references = portfolio.references || [];
 
   // Common input styles
-  const inputClass = "w-full bg-slate-950/50 border border-slate-700/50 rounded-lg px-3 py-2 text-sm text-slate-100 outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all";
-  const textareaClass = "w-full bg-slate-950/50 border border-slate-700/50 rounded-lg px-3 py-2 text-sm text-slate-100 outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all resize-none";
+  const inputClass = "w-full bg-slate-950/50 border border-slate-700/50 rounded-lg px-3 py-2 text-sm text-slate-100 outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all";
+  const textareaClass = "w-full bg-slate-950/50 border border-slate-700/50 rounded-lg px-3 py-2 text-sm text-slate-100 outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all resize-none";
 
   return (
     <div className="bg-slate-900/70 border border-slate-800 rounded-2xl p-4 space-y-4">
@@ -113,7 +113,7 @@ const PortfolioForm = ({ portfolio, onChange }) => {
           <button
             type="button"
             onClick={() => addListItem("experience", emptyExperience)}
-            className="text-[11px] px-2 py-1 rounded-md border border-slate-700 hover:border-indigo-500 text-slate-300 transition-colors"
+            className="text-[11px] px-2 py-1 rounded-md border border-slate-700 hover:border-teal-500 text-slate-300 transition-colors"
           >
             + Add
           </button>
@@ -199,7 +199,7 @@ const PortfolioForm = ({ portfolio, onChange }) => {
           <button
             type="button"
             onClick={() => addListItem("projects", emptyProject)}
-            className="text-[11px] px-2 py-1 rounded-md border border-slate-700 hover:border-indigo-500 text-slate-300 transition-colors"
+            className="text-[11px] px-2 py-1 rounded-md border border-slate-700 hover:border-teal-500 text-slate-300 transition-colors"
           >
             + Add
           </button>
@@ -320,7 +320,7 @@ const PortfolioForm = ({ portfolio, onChange }) => {
           <button
             type="button"
             onClick={() => addListItem("references", emptyReference)}
-            className="text-[11px] px-2 py-1 rounded-md border border-slate-700 hover:border-indigo-500 text-slate-300 transition-colors"
+            className="text-[11px] px-2 py-1 rounded-md border border-slate-700 hover:border-teal-500 text-slate-300 transition-colors"
           >
             + Add
           </button>

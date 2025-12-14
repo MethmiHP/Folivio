@@ -6,6 +6,7 @@ import Template2 from "../components/templates/Template2";
 import Template3 from "../components/templates/Template3";
 import Template4 from "../components/templates/Template4";
 import Template5 from "../components/templates/Template5";
+import CustomTemplate from "../components/templates/CustomTemplate";
 
 const templateComponents = {
   template1: Template1,
@@ -13,7 +14,7 @@ const templateComponents = {
   template3: Template3,
   template4: Template4,
   template5: Template5,
-
+  custom: CustomTemplate,
 };
 
 const PublicPortfolio = () => {
@@ -45,7 +46,7 @@ const PublicPortfolio = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-indigo-950 via-slate-900 to-purple-950 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-blue-950 via-slate-900 to-teal-950 flex items-center justify-center">
         <div className="text-slate-400">Loading portfolio...</div>
       </div>
     );
@@ -53,13 +54,13 @@ const PublicPortfolio = () => {
 
   if (error || !portfolio || !user) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-indigo-950 via-slate-900 to-purple-950 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-blue-950 via-slate-900 to-teal-950 flex items-center justify-center">
         <div className="bg-slate-900/70 border border-slate-700 rounded-2xl p-8 text-center text-white space-y-4">
           <h1 className="text-2xl font-semibold">Portfolio not found</h1>
           <p className="text-slate-400">{error || "This portfolio is unavailable."}</p>
           <Link
             to="/"
-            className="inline-flex items-center px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-sm font-medium"
+            className="inline-flex items-center px-4 py-2 rounded-lg bg-teal-600 hover:bg-teal-500 text-sm font-medium"
           >
             Go back home
           </Link>
@@ -71,15 +72,15 @@ const PublicPortfolio = () => {
   const SelectedTemplate = templateComponents[portfolio.theme] || Template1;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-950 via-slate-900 to-purple-950 py-10 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-blue-950 via-slate-900 to-teal-950 py-10 px-4">
       <div className="max-w-5xl mx-auto space-y-6">
         <header className="text-center text-white space-y-2">
-          <p className="text-sm uppercase tracking-[0.3em] text-indigo-300">Portfolio of</p>
+          <p className="text-sm uppercase tracking-[0.3em] text-teal-300">Portfolio of</p>
           <h1 className="text-4xl font-bold">{user.name || user.username}</h1>
           <p className="text-slate-300">See how {user.name?.split(" ")[0] || user.username} presents their work.</p>
         </header>
 
-        <div className="bg-slate-900/70 border border-slate-800 rounded-3xl p-4 shadow-2xl shadow-indigo-900/30">
+        <div className="bg-slate-900/70 border border-slate-800 rounded-3xl p-4 shadow-2xl shadow-teal-900/30">
           <SelectedTemplate portfolio={portfolio} username={user.username} />
         </div>
       </div>

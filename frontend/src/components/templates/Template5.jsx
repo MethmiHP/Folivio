@@ -1,6 +1,6 @@
 // Greenary Template (Green & Teal Theme)
 const Template5 = ({ portfolio, username }) => {
-    const { about = {}, skills = [], experience = [], projects = [], social = {} } =
+    const { about = {}, skills = [], experience = [], projects = [], references = [], social = {} } =
       portfolio || {};
   
     return (
@@ -117,6 +117,42 @@ const Template5 = ({ portfolio, username }) => {
             </section>
           )}
   
+          {/* References */}
+          {references?.length > 0 && (
+            <section>
+              <h3 className="text-base font-bold text-teal-300 mb-3 flex items-center gap-2">
+                <span className="w-2 h-2 bg-green-400 rounded-full"></span>
+                References
+              </h3>
+              <div className="grid grid-cols-1 gap-3">
+                {references.map((ref, idx) => (
+                  <div
+                    key={idx}
+                    className="bg-gradient-to-r from-green-800/40 to-teal-800/40 rounded-lg p-4 border-2 border-green-500 shadow-sm"
+                  >
+                    <h4 className="font-bold">{ref.name}</h4>
+                    {ref.position && ref.company && (
+                      <p className="text-xs text-teal-300 font-semibold mt-1">{ref.position} at {ref.company}</p>
+                    )}
+                    <div className="flex flex-wrap gap-3 text-xs font-semibold mt-2">
+                      {ref.email && (
+                        <a
+                          href={`mailto:${ref.email}`}
+                          className="hover:text-green-300 bg-green-700/40 px-3 py-1 rounded-full"
+                        >
+                          📧 {ref.email}
+                        </a>
+                      )}
+                      {(ref.contactNo || ref.contact_no) && (
+                        <span className="text-green-100 bg-teal-700/40 px-3 py-1 rounded-full">📞 {ref.contactNo || ref.contact_no}</span>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+
           {/* Contact */}
           <section>
             <h3 className="text-base font-bold text-teal-300 mb-3 flex items-center gap-2">

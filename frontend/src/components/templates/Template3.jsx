@@ -1,6 +1,6 @@
 // Minimal Template - Clean and minimalist approach
 const Template3 = ({ portfolio, username }) => {
-  const { about = {}, skills = [], experience = [], projects = [], social = {} } = portfolio || {};
+  const { about = {}, skills = [], experience = [], projects = [], references = [], social = {} } = portfolio || {};
 
   return (
     <div className="border border-slate-300 rounded-xl overflow-hidden bg-white text-slate-900">
@@ -75,6 +75,35 @@ const Template3 = ({ portfolio, username }) => {
                   {proj.description && (
                     <p className="text-xs text-slate-600 mt-1 font-light">{proj.description}</p>
                   )}
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* References */}
+        {references && references.length > 0 && (
+          <section>
+            <h3 className="text-xs font-medium text-slate-400 uppercase tracking-widest mb-3">
+              References
+            </h3>
+            <div className="space-y-3">
+              {references.map((ref, idx) => (
+                <div key={idx} className="border-b border-slate-100 pb-3 last:border-0">
+                  <h4 className="font-normal text-slate-900">{ref.name}</h4>
+                  {ref.position && ref.company && (
+                    <p className="text-xs text-slate-500 mt-1">{ref.position} at {ref.company}</p>
+                  )}
+                  <div className="flex flex-wrap gap-3 text-xs text-slate-500 font-light mt-2">
+                    {ref.email && (
+                      <a href={`mailto:${ref.email}`} className="hover:text-slate-700">
+                        {ref.email}
+                      </a>
+                    )}
+                    {(ref.contactNo || ref.contact_no) && (
+                      <span className="text-slate-400">📞 {ref.contactNo || ref.contact_no}</span>
+                    )}
+                  </div>
                 </div>
               ))}
             </div>

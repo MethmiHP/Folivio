@@ -1,6 +1,6 @@
 // Classic Template - Traditional professional layout
 const Template1 = ({ portfolio, username }) => {
-  const { about = {}, skills = [], experience = [], projects = [], social = {} } = portfolio || {};
+  const { about = {}, skills = [], experience = [], projects = [], references = [], social = {} } = portfolio || {};
 
   return (
     <div className="border border-slate-800 rounded-xl overflow-hidden bg-white text-slate-900">
@@ -75,6 +75,35 @@ const Template1 = ({ portfolio, username }) => {
                   {proj.description && (
                     <p className="text-xs text-slate-600 mt-1">{proj.description}</p>
                   )}
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* References */}
+        {references && references.length > 0 && (
+          <section>
+            <h3 className="text-base font-bold text-slate-900 mb-3 border-b-2 border-indigo-500 pb-1 inline-block">
+              References
+            </h3>
+            <div className="space-y-3 mt-3">
+              {references.map((ref, idx) => (
+                <div key={idx} className="bg-slate-50 rounded-lg p-3 border border-slate-200">
+                  <h4 className="font-bold text-slate-900">{ref.name}</h4>
+                  {ref.position && ref.company && (
+                    <p className="text-xs text-indigo-600 font-medium mt-1">{ref.position} at {ref.company}</p>
+                  )}
+                  <div className="flex flex-wrap gap-3 text-xs text-slate-600 mt-2">
+                    {ref.email && (
+                      <a href={`mailto:${ref.email}`} className="hover:text-indigo-600">
+                        📧 {ref.email}
+                      </a>
+                    )}
+                    {(ref.contactNo || ref.contact_no) && (
+                      <span className="text-slate-500">📞 {ref.contactNo || ref.contact_no}</span>
+                    )}
+                  </div>
                 </div>
               ))}
             </div>

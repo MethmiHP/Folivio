@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Eye, EyeOff, Mail, Lock } from "lucide-react";
 import api from "../api/axios";
 import { useAuth } from "../context/AuthContext";
+import logoFinal from "../assets/logo-final.png";
 
 const Login = () => {
   useEffect(() => {
@@ -41,30 +42,30 @@ const Login = () => {
   };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center p-4 bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-950 overflow-auto">
+    <div className="fixed inset-0 flex items-center justify-center p-4 bg-gradient-to-br from-blue-950 via-slate-900 to-teal-950 overflow-auto">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-indigo-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-purple-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '700ms' }}></div>
+        <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-teal-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-cyan-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '700ms' }}></div>
       </div>
 
       {/* Login card */}
       <div className="relative w-full max-w-md">
         {/* Glow effect */}
-        <div className="absolute -inset-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-3xl blur opacity-20 transition duration-1000"></div>
+        <div className="absolute -inset-1 bg-gradient-to-r from-teal-500 via-cyan-500 to-blue-500 rounded-3xl blur opacity-20 transition duration-1000"></div>
         
         {/* Main card */}
         <div className="relative bg-slate-900/90 backdrop-blur-xl border border-slate-800/50 rounded-3xl p-8 shadow-2xl">
           {/* Header */}
           <div className="text-center mb-8">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl mb-4 shadow-lg shadow-indigo-500/50 overflow-hidden">
+            <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-2xl mb-4 shadow-lg shadow-teal-500/50 overflow-hidden">
               <img 
-                src="/logo.png" 
-                alt="Logo" 
-                className="w-10 h-10 object-contain"
+                src={logoFinal} 
+                alt="Folivio Logo" 
+                className="w-full h-full object-contain p-3"
               />
             </div>
-            <h1 className="text-3xl font-bold bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent mb-2">
+            <h1 className="text-3xl font-bold bg-gradient-to-r from-teal-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent mb-2">
               Welcome Back
             </h1>
             <p className="text-slate-400 text-sm">
@@ -91,13 +92,13 @@ const Login = () => {
               </label>
               <div className="relative group">
                 <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                  <Mail className="w-5 h-5 text-slate-500 group-focus-within:text-indigo-400 transition-colors" />
+                  <Mail className="w-5 h-5 text-slate-500 group-focus-within:text-teal-400 transition-colors" />
                 </div>
                 <input
                   type="text"
                   value={emailOrUsername}
                   onChange={(e) => setEmailOrUsername(e.target.value)}
-                  className="w-full pl-12 pr-4 py-3 bg-slate-800/50 border border-slate-700/50 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition-all duration-200"
+                  className="w-full pl-12 pr-4 py-3 bg-slate-800/50 border border-slate-700/50 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all duration-200"
                   placeholder="Enter your email or username"
                   required
                 />
@@ -111,13 +112,13 @@ const Login = () => {
               </label>
               <div className="relative group">
                 <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                  <Lock className="w-5 h-5 text-slate-500 group-focus-within:text-indigo-400 transition-colors" />
+                  <Lock className="w-5 h-5 text-slate-500 group-focus-within:text-teal-400 transition-colors" />
                 </div>
                 <input
                   type={showPassword ? "text" : "password"}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full pl-12 pr-12 py-3 bg-slate-800/50 border border-slate-700/50 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition-all duration-200"
+                  className="w-full pl-12 pr-12 py-3 bg-slate-800/50 border border-slate-700/50 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all duration-200"
                   placeholder="Enter your password"
                   required
                 />
@@ -139,7 +140,7 @@ const Login = () => {
             <div className="flex items-center justify-end">
               <a
                 href="#"
-                className="text-sm text-indigo-400 hover:text-indigo-300 transition-colors"
+                className="text-sm text-teal-400 hover:text-teal-300 transition-colors"
               >
                 Forgot password?
               </a>
@@ -149,7 +150,7 @@ const Login = () => {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 disabled:from-slate-700 disabled:to-slate-700 text-white font-semibold py-3 px-6 rounded-xl shadow-lg shadow-indigo-500/30 hover:shadow-indigo-500/50 disabled:shadow-none transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98] disabled:scale-100 disabled:cursor-not-allowed"
+              className="w-full bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-500 hover:to-cyan-500 disabled:from-slate-700 disabled:to-slate-700 text-white font-semibold py-3 px-6 rounded-xl shadow-lg shadow-teal-500/30 hover:shadow-teal-500/50 disabled:shadow-none transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98] disabled:scale-100 disabled:cursor-not-allowed"
             >
               {loading ? (
                 <span className="flex items-center justify-center gap-2">
@@ -183,7 +184,7 @@ const Login = () => {
               Create your portfolio in minutes.{" "}
               <Link
                 to="/register"
-                className="text-indigo-400 hover:text-indigo-300 font-medium transition-colors"
+                className="text-teal-400 hover:text-teal-300 font-medium transition-colors"
               >
                 Sign up for free
               </Link>

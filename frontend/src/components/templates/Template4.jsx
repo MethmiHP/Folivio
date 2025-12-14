@@ -1,6 +1,6 @@
 // Creative Template - Bold and creative design
 const Template4 = ({ portfolio, username }) => {
-  const { about = {}, skills = [], experience = [], projects = [], social = {} } = portfolio || {};
+  const { about = {}, skills = [], experience = [], projects = [], references = [], social = {} } = portfolio || {};
 
   return (
     <div className="border-2 border-pink-500 rounded-xl overflow-hidden bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-50 text-slate-900">
@@ -78,6 +78,36 @@ const Template4 = ({ portfolio, username }) => {
                   {proj.description && (
                     <p className="text-xs text-slate-700 mt-2">{proj.description}</p>
                   )}
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* References */}
+        {references && references.length > 0 && (
+          <section>
+            <h3 className="text-base font-bold text-purple-600 mb-3 flex items-center gap-2">
+              <span className="w-2 h-2 bg-pink-500 rounded-full"></span>
+              References
+            </h3>
+            <div className="grid grid-cols-1 gap-3">
+              {references.map((ref, idx) => (
+                <div key={idx} className="bg-gradient-to-r from-pink-100 to-purple-100 rounded-lg p-4 border-2 border-pink-300 shadow-sm">
+                  <h4 className="font-bold text-slate-900">{ref.name}</h4>
+                  {ref.position && ref.company && (
+                    <p className="text-xs text-purple-600 font-semibold mt-1">{ref.position} at {ref.company}</p>
+                  )}
+                  <div className="flex flex-wrap gap-3 text-xs text-slate-700 font-semibold mt-2">
+                    {ref.email && (
+                      <a href={`mailto:${ref.email}`} className="hover:text-pink-600">
+                        📧 {ref.email}
+                      </a>
+                    )}
+                    {(ref.contactNo || ref.contact_no) && (
+                      <span className="text-slate-600">📞 {ref.contactNo || ref.contact_no}</span>
+                    )}
+                  </div>
                 </div>
               ))}
             </div>

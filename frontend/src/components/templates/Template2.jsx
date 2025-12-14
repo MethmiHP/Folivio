@@ -1,6 +1,6 @@
 // Modern Template - Contemporary design with gradients
 const Template2 = ({ portfolio, username }) => {
-  const { about = {}, skills = [], experience = [], projects = [], social = {} } = portfolio || {};
+  const { about = {}, skills = [], experience = [], projects = [], references = [], social = {} } = portfolio || {};
 
   return (
     <div className="border border-slate-800 rounded-xl overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-indigo-900 text-white">
@@ -77,6 +77,35 @@ const Template2 = ({ portfolio, username }) => {
                   {proj.description && (
                     <p className="text-xs text-slate-300 mt-2">{proj.description}</p>
                   )}
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* References */}
+        {references && references.length > 0 && (
+          <section>
+            <h3 className="text-sm font-bold text-purple-300 uppercase tracking-wider mb-3">
+              References
+            </h3>
+            <div className="space-y-3">
+              {references.map((ref, idx) => (
+                <div key={idx} className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-purple-500/20">
+                  <h4 className="font-bold text-white">{ref.name}</h4>
+                  {ref.position && ref.company && (
+                    <p className="text-xs text-purple-300 mt-1">{ref.position} at {ref.company}</p>
+                  )}
+                  <div className="flex flex-wrap gap-3 text-xs text-slate-300 mt-2">
+                    {ref.email && (
+                      <a href={`mailto:${ref.email}`} className="hover:text-purple-300">
+                        {ref.email}
+                      </a>
+                    )}
+                    {(ref.contactNo || ref.contact_no) && (
+                      <span className="text-slate-400">📞 {ref.contactNo || ref.contact_no}</span>
+                    )}
+                  </div>
                 </div>
               ))}
             </div>
