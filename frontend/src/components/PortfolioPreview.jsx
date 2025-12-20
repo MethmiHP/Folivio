@@ -62,11 +62,11 @@ const PortfolioPreview = ({ portfolio, username }) => {
               )}
             </button>
           </div>
-          {isLocalhost() && !import.meta.env.VITE_PUBLIC_URL && (
-            <span className="text-[10px] text-amber-400 mt-1 max-w-[250px] text-right">
-              ⚠️ Set VITE_PUBLIC_URL in .env for network access
-            </span>
-          )}
+          {/* {isLocalhost() && !import.meta.env.VITE_PUBLIC_URL && (
+            // <span className="text-[10px] text-amber-400 mt-1 max-w-[250px] text-right">
+            //   ⚠️ Set VITE_PUBLIC_URL in .env for network access
+            // </span>
+          )} */}
         </div>
       </div>
 
