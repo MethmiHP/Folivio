@@ -31,10 +31,25 @@ const Login = () => {
     setError("");
     setLoading(true);
     try {
+      console.log('Attempting login with:', { emailOrUsername });
+      console.log('API base URL:', api.defaults.baseURL);
+      
       const res = await api.post("/auth/login", { emailOrUsername, password });
+      console.log('Login successful:', res.data);
+      
       login(res.data);
       navigate(from, { replace: true });
     } catch (err) {
+      console.error('Login error:', {
+        message: err.message,
+        response: err.response?.data,
+        status: err.response?.status,
+        config: {
+          url: err.config?.url,
+          method: err.config?.method,
+          headers: err.config?.headers
+        }
+      });
       setError(err.response?.data?.message || "Login failed");
     } finally {
       setLoading(false);

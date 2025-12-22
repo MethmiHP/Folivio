@@ -5,14 +5,22 @@ const generateToken = (res, userId) => {
     expiresIn: "7d",
   });
 
-  // cookie optional, you can also only send in JSON
-  res.cookie("token", token, {
+  // Cookie settings for both development and production
+  const isProduction = process.env.NODE_ENV === 'production';
+  const cookieOptions = {
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "lax",
-    maxAge: 7 * 24 * 60 * 60 * 1000,
-  });
+    secure: isProduction,
+    sameSite: isProduction ? 'none' : 'lax', // Required for cross-site cookies
+    maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+    path: '/',
+  };
 
+  // Only set domain in production
+  if (isProduction && process.env.COOKIE_DOMAIN) {
+    cookieOptions.domain = process.env.COOKIE_DOMAIN;
+  }
+
+  res.cookie('token', token, cookieOptions);
   return token;
 };
 
