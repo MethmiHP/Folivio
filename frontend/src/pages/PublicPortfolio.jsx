@@ -84,6 +84,9 @@ const PublicPortfolio = () => {
           <SelectedTemplate portfolio={portfolio} username={user.username} />
         </div>
       </div>
+      
+      {/* Footer */}
+      <Footer />
     </div>
   );
 };

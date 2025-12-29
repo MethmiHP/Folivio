@@ -162,7 +162,7 @@ const Dashboard = () => {
         {/* Top bar */}
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 px-6 pt-6">
           <div>
-            <h1 className="text-2xl font-semibold mb-1 text-white">Portfolio Builder</h1>
+            <h1 className="text-2xl font-semibold mb-1 text-white mt-10">Portfolio Builder</h1>
             <p className="text-sm text-slate-300">
               Edit your sections on the left and see a live preview on the right.
             </p>
@@ -171,20 +171,20 @@ const Dashboard = () => {
             <button
               type="button"
               onClick={() => setAiOpen(true)}
-              className="px-4 py-2 rounded-lg border border-slate-600/50 bg-slate-800/30 backdrop-blur-sm text-xs md:text-sm text-slate-200 hover:border-teal-500 hover:bg-slate-800/50 hover:text-white transition-all"
+              className="px-4 py-2 rounded-lg border border-slate-600/50 bg-slate-800/30 backdrop-blur-sm text-xs md:text-sm text-slate-200 hover:border-teal-500 hover:bg-slate-800/50 hover:text-white transition-all mt-10"
             >
               AI Generate
             </button>
             <button
               onClick={handleSave}
               disabled={saving}
-              className="px-4 py-2 rounded-lg bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-500 hover:to-cyan-500 disabled:opacity-60 font-medium text-xs md:text-sm text-white shadow-lg shadow-teal-900/30 transition-all"
+              className="px-4 py-2 rounded-lg bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-500 hover:to-cyan-500 disabled:opacity-60 font-medium text-xs md:text-sm text-white shadow-lg shadow-teal-900/30 transition-all mt-10"
             >
               {saving ? "Saving..." : "Save Changes"}
             </button>
             <button
               onClick={handleDownloadPdf}
-              className="px-4 py-2 rounded-lg border border-slate-600/50 bg-slate-800/30 backdrop-blur-sm hover:border-teal-500 hover:bg-slate-800/50 text-xs md:text-sm text-white transition-all"
+              className="px-4 py-2 rounded-lg border border-slate-600/50 bg-slate-800/30 backdrop-blur-sm hover:border-teal-500 hover:bg-slate-800/50 text-xs md:text-sm text-white transition-all mt-10"
             >
               Download PDF
             </button>

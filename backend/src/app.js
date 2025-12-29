@@ -3,9 +3,25 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const dotenv = require("dotenv");
 
-const { notFound, errorHandler } = require("./middlewares/errorHandler");
-
+// Load environment variables FIRST
 dotenv.config();
+
+// Initialize Passport (only if Google OAuth credentials are available)
+let passport = null;
+try {
+  if (process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET) {
+    passport = require('passport');
+    require('./config/passport')(passport);
+    console.log('✓ Google OAuth configured');
+  } else {
+    console.log('⚠ Google OAuth not configured (GOOGLE_CLIENT_ID or GOOGLE_CLIENT_SECRET missing)');
+  }
+} catch (error) {
+  console.warn('⚠ Failed to initialize Google OAuth:', error.message);
+  console.log('   Continuing without Google OAuth...');
+}
+
+const { notFound, errorHandler } = require("./middlewares/errorHandler");
 
 const authRoutes = require("./routes/authRoutes");
 const portfolioRoutes = require("./routes/portfolioRoutes");
@@ -15,6 +31,19 @@ const pdfRoutes = require("./routes/pdfRoutes");
 
 
 const app = express();
+
+// Session middleware (required for Passport)
+if (passport) {
+  app.use(
+    require('express-session')({
+      secret: process.env.JWT_SECRET || 'fallback-secret-key',
+      resave: false,
+      saveUninitialized: false
+    })
+  );
+  app.use(passport.initialize());
+  app.use(passport.session());
+}
 
 // Parse allowed origins from environment variable
 const allowedOrigins = (process.env.CLIENT_URL || '')
