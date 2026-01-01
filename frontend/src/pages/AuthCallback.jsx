@@ -23,7 +23,7 @@ const AuthCallback = () => {
         try {
           // Store token and fetch user data
           localStorage.setItem('token', token);
-          
+            // Store token and fetch user data
           // Fetch user data with the token
           const response = await api.get('/auth/me');
           
